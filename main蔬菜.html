@@ -5,246 +5,242 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>志光街菜攤</title>
   <style>
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>志光街菜攤</title>
-  <style>
-    :root {
-      --main-green: #2E7D32;
-      --accent-yellow: #F9A825;
-      --light-bg: #FCFAF5;
-      --card-shadow: rgba(0, 0, 0, 0.08);
-      --text-dark: #444;
-      --hover-green: #388E3C;
-    }
+   /* 變數區域 */
+:root {
+  --main-green: #2E7D32;
+  --accent-yellow: #F9A825;
+  --light-bg: #FCFAF5;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --text-dark: #444;
+  --hover-green: #388E3C;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Noto Sans TC', sans-serif;
-      background-color: var(--light-bg);
-      color: var(--text-dark);
-      overflow-x: hidden;
-    }
+body {
+  margin: 0;
+  font-family: 'Noto Sans TC', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
 
-    header {
-      background: linear-gradient(to right, #a5d6a7, #81c784);
-      padding: 40px 20px;
-      text-align: center;
-      color: white;
-      box-shadow: 0 3px 10px var(--card-shadow);
-      position: relative;
-    }
+header {
+  background: linear-gradient(to right, #a5d6a7, #81c784);
+  padding: 40px 20px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 3px 10px var(--card-shadow);
+  position: relative;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 3em;
-      letter-spacing: 1.5px;
-      font-weight: 700;
-    }
+header h1 {
+  margin: 0;
+  font-size: 3em;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
 
-    nav {
-      background-color: var(--main-green);
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 12px 0;
-      position: absolute;
-      top: 70px;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 6px var(--card-shadow);
-      flex-direction: column; /* 預設顯示為垂直排列 */
-      display: none;
-    }
+nav {
+  background-color: var(--main-green);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 12px 0;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px var(--card-shadow);
+  flex-direction: column; /* 預設顯示為垂直排列 */
+  display: none; /* 隱藏 */
+}
 
-    nav.active {
-      display: flex;
-    }
+nav.active {
+  display: flex; /* 顯示選單 */
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 5px 15px;
-      font-weight: 600;
-      font-size: 1.05em;
-      padding: 8px 14px;
-      border-radius: 4px;
-      transition: background-color 0.3s, transform 0.2s;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 5px 15px;
+  font-weight: 600;
+  font-size: 1.05em;
+  padding: 8px 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.2s;
+}
 
-    nav a:hover {
-      background-color: var(--accent-yellow);
-      color: #2E7D32;
-    }
+nav a:hover {
+  background-color: var(--accent-yellow);
+  color: #2E7D32;
+}
 
-    /* 漢堡選單按鈕 */
-    .menu-toggle {
-      display: block;
-      font-size: 2.5em;
-      background: none;
-      border: none;
-      color: white;
-      padding: 10px;
-      cursor: pointer;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
+/* 漢堡選單按鈕：將其放在左上角 */
+.menu-toggle {
+  display: block;
+  font-size: 2.5em;
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 20px; /* 移動到左上角 */
+}
 
-    /* Banner */
-    .banner {
-      background-image: url('0.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 320px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2.2em;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
-    }
+/* Banner */
+.banner {
+  background-image: url('0.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2.2em;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
 
-    /* Content Section */
-    .content {
-      padding: 60px 20px 40px;
-      max-width: 1200px;
-      margin: auto;
-    }
+/* Content Section */
+.content {
+  padding: 60px 20px 40px;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    .category-title {
-      font-size: 2em;
-      font-weight: bold;
-      color: var(--main-green);
-      text-align: center;
-      margin-bottom: 10px;
-    }
+.category-title {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--main-green);
+  text-align: center;
+  margin-bottom: 10px;
+}
 
-    .category-description {
-      font-size: 1.1em;
-      color: #666;
-      text-align: center;
-      margin-bottom: 40px;
-    }
+.category-description {
+  font-size: 1.1em;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+}
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-    }
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
 
-    .card {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 5px 12px var(--card-shadow);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 12px var(--card-shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
-    }
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+}
 
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
 
-    .card h3 {
-      margin: 16px 0 8px;
-      font-size: 1.2em;
-      color: var(--main-green);
-      text-align: center;
-    }
+.card h3 {
+  margin: 16px 0 8px;
+  font-size: 1.2em;
+  color: var(--main-green);
+  text-align: center;
+}
 
-    .card p {
-      font-size: 0.95em;
-      color: #555;
-      text-align: center;
-      padding: 0 16px 16px;
-    }
+.card p {
+  font-size: 0.95em;
+  color: #555;
+  text-align: center;
+  padding: 0 16px 16px;
+}
 
-    /* Footer */
-    footer {
-      background-color: var(--main-green);
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 1em;
-      margin-top: 60px;
-    }
+/* Footer */
+footer {
+  background-color: var(--main-green);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 1em;
+  margin-top: 60px;
+}
 
-    /* Mobile Optimization */
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: row; /* 顯示為兩行 */
-        display: none; /* 隱藏選單 */
-        width: 100%;
-      }
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* 改為垂直顯示 */
+    display: none;
+    width: 100%;
+  }
 
-      nav.active {
-        display: flex; /* 顯示選單 */
-      }
+  nav.active {
+    display: flex;
+  }
 
-      nav a {
-        margin: 5px 10px;
-        font-size: 1.05em;
-        padding: 8px 14px;
-      }
+  nav a {
+    margin: 5px 10px;
+    font-size: 1.05em;
+    padding: 8px 14px;
+  }
 
-      .menu-toggle {
-        display: block;
-      }
+  /* 修改漢堡選單按鈕樣式 */
+  .menu-toggle {
+    display: block;
+  }
 
-      /* 分兩行顯示選單項目 */
-      nav div {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        width: 100%;
-      }
+  /* 改為兩行顯示選單項目 */
+  nav div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 
-      nav div a {
-        width: 45%; /* 每行顯示兩個項目 */
-        text-align: center;
-        margin: 8px 0;
-      }
-    }
+  nav div a {
+    width: 100%; /* 每行顯示一個項目 */
+    text-align: center;
+    margin: 8px 0;
+  }
+}
 
-    @media (max-width: 480px) {
-      .banner {
-        font-size: 1.4em;
-        height: 200px;
-      }
+@media (max-width: 480px) {
+  .banner {
+    font-size: 1.4em;
+    height: 200px;
+  }
 
-      header h1 {
-        font-size: 1.8em;
-      }
+  header h1 {
+    font-size: 1.8em;
+  }
 
-      .product-grid {
-        grid-template-columns: 1fr;
-      }
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
 
-      .card img {
-        height: 120px;
-      }
+  .card img {
+    height: 120px;
+  }
 
-      .card h3 {
-        font-size: 1em;
-      }
+  .card h3 {
+    font-size: 1em;
+  }
 
-      .card p {
-        font-size: 0.85em;
-      }
-    }
+  .card p {
+    font-size: 0.85em;
+  }
+}
+
 
   </style>
 </head>
