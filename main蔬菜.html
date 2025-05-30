@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>志光街菜攤</title>
   <style>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>志光街菜攤</title>
+  <style>
     :root {
       --main-green: #2E7D32;
       --accent-yellow: #F9A825;
@@ -44,18 +51,24 @@
       justify-content: center;
       flex-wrap: wrap;
       padding: 12px 0;
-      position: sticky;
-      top: 0;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
       z-index: 1000;
       box-shadow: 0 2px 6px var(--card-shadow);
-      flex-direction: row; /* 默認顯示為橫向 */
-      transition: transform 0.3s ease;
+      flex-direction: column; /* 預設顯示為垂直排列 */
+      display: none;
+    }
+
+    nav.active {
+      display: flex;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 12px;
+      margin: 5px 15px;
       font-weight: 600;
       font-size: 1.05em;
       padding: 8px 14px;
@@ -70,7 +83,7 @@
 
     /* 漢堡選單按鈕 */
     .menu-toggle {
-      display: none;
+      display: block;
       font-size: 2.5em;
       background: none;
       border: none;
@@ -172,15 +185,9 @@
     /* Mobile Optimization */
     @media (max-width: 768px) {
       nav {
+        flex-direction: row; /* 顯示為兩行 */
         display: none; /* 隱藏選單 */
-        flex-direction: column;
-        padding: 10px 0;
         width: 100%;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        background-color: var(--main-green);
-        z-index: 999;
       }
 
       nav.active {
@@ -188,13 +195,27 @@
       }
 
       nav a {
-        margin: 8px 0;
-        font-size: 1em;
-        padding: 6px 12px;
+        margin: 5px 10px;
+        font-size: 1.05em;
+        padding: 8px 14px;
       }
 
       .menu-toggle {
-        display: block; /* 顯示漢堡選單按鈕 */
+        display: block;
+      }
+
+      /* 分兩行顯示選單項目 */
+      nav div {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      nav div a {
+        width: 45%; /* 每行顯示兩個項目 */
+        text-align: center;
+        margin: 8px 0;
       }
     }
 
