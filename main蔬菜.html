@@ -47,6 +47,8 @@
       top: 0;
       z-index: 1000;
       box-shadow: 0 2px 6px var(--card-shadow);
+      display: none; /* 初始設為隱藏 */
+      flex-direction: column; /* 改為垂直排列 */
     }
 
     nav a {
@@ -166,6 +168,7 @@
       }
 
       nav {
+        display: block; /* 在手機上顯示選單 */
         flex-direction: column;
         padding: 10px 0;
       }
@@ -239,9 +242,12 @@
 
   <header>
     <h1>志光街菜攤</h1>
+    <!-- 加入漢堡選單按鈕 -->
+    <div id="menu-toggle" style="cursor: pointer; font-size: 2em; color: white;">&#9776;</div>
   </header>
 
-  <nav>
+  <!-- 選單區域 -->
+  <nav id="menu">
     <a href="蔬菜.html">蔬菜類</a>
     <a href="水果.html">水果類</a>
     <a href="冷藏食品.html">冷藏食品</a>
@@ -258,7 +264,7 @@
     <div class="category-title">商品一覽</div>
     <div class="category-description">
       精選新鮮葉菜，為您的健康加分，無論是清爽沙拉還是美味湯品，都是最佳選擇！
-	  本網站僅提供部分商品參考，詳細內容請洽現場諮詢
+      本網站僅提供部分商品參考，詳細內容請洽現場諮詢
     </div>
 
     <div class="product-grid">
@@ -275,6 +281,14 @@
   <footer>
     <p>&copy; 2025 志光街菜攤 | 所有權利保留</p>
   </footer>
+
+  <script>
+    // 切換選單顯示
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      const nav = document.getElementById('menu');
+      nav.style.display = nav.style.display === 'none' || nav.style.display === '' ? 'block' : 'none';
+    });
+  </script>
 
 </body>
 </html>
